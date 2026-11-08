@@ -26,6 +26,10 @@
     "#msl-gate .g-tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#2A0A0C;background:#E9B44C;padding:5px 11px;border-radius:999px}" +
     "#msl-gate h1{font-size:clamp(30px,6vw,40px);font-weight:700;line-height:1.1;letter-spacing:-.01em;margin:16px 0 12px;text-wrap:balance}" +
     "#msl-gate p{margin:0 auto;max-width:38ch;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,.86)}" +
+    "#msl-gate .g-about{margin-bottom:12px;color:#fff;font-weight:500}" +
+    "#msl-gate .g-natl{display:inline-block;margin-top:14px;font-size:14.5px;font-weight:700;color:#fff;text-decoration:underline;text-underline-offset:3px}" +
+    "#msl-gate .g-natl:hover{color:#FBEFD5}" +
+    "#msl-gate .g-natl:focus-visible{outline:2px solid #E9B44C;outline-offset:2px}" +
     "#msl-gate form{margin:30px auto 0;max-width:340px;text-align:left}" +
     "#msl-gate label{display:block;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:8px}" +
     "#msl-gate .g-row{display:flex;gap:8px}" +
@@ -61,7 +65,9 @@
         '<img class="g-crest" src="' + crest + '" alt="Mu Sigma Lambda crest">' +
         '<span class="g-tag">Pending approval</span>' +
         '<h1 id="msl-gate-h">Mu Sigma Lambda Cornell Chapter is coming soon</h1>' +
+        '<p class="g-about">Mu Sigma Lambda is a co-ed professional fraternity for students pursuing careers in the business of sports.</p>' +
         '<p>We are currently working with Cornell to establish the chapter. This site is pending approval and will be public shortly.</p>' +
+        '<a class="g-natl" href="https://www.musigmalambda.org/" target="_blank" rel="noopener noreferrer">Visit Mu Sigma Lambda Nationals &nearr;</a>' +
         '<form novalidate>' +
           '<label for="msl-pw">Preview access</label>' +
           '<div class="g-row">' +
