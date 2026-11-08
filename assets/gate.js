@@ -38,6 +38,13 @@
     "#msl-gate .g-err{min-height:20px;margin-top:8px;font-size:13.5px;color:#FBEFD5}" +
     "#msl-gate .g-shake{animation:mslShake .3s}" +
     "@keyframes mslShake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}" +
+    "#msl-gate .g-ask{margin:22px auto 0;max-width:340px;padding:18px 18px 16px;border-radius:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22)}" +
+    "#msl-gate .g-ask b{display:block;font-size:15px;color:#fff;margin-bottom:4px}" +
+    "#msl-gate .g-ask p{font-size:14px;max-width:none}" +
+    "#msl-gate .g-ask p a{color:#fff;font-weight:600}" +
+    "#msl-gate .g-form{display:inline-block;margin-top:12px;font-weight:700;font-size:14.5px;padding:10px 16px;border-radius:6px;background:#E9B44C;color:#2A0A0C;text-decoration:none}" +
+    "#msl-gate .g-form:hover{background:#F3C86A}" +
+    "#msl-gate .g-form:focus-visible{outline:2px solid #fff;outline-offset:2px}" +
     "#msl-gate .g-foot{margin-top:28px;font-size:13px;color:rgba(255,255,255,.65)}" +
     "#msl-gate .g-foot a{color:#fff}";
   document.head.appendChild(st);
@@ -63,6 +70,11 @@
           '</div>' +
           '<div class="g-err" aria-live="polite"></div>' +
         '</form>' +
+        '<div class="g-ask">' +
+          '<b>Need the password?</b>' +
+          '<p>Fill out the interest form, or contact Kyle Velasco at <a href="mailto:kav68@cornell.edu">kav68@cornell.edu</a>.</p>' +
+          '<a class="g-form" href="https://docs.google.com/forms/d/e/1FAIpQLScLScOoPjlC7BzJj9E90lC6qq1nAV_3OBc7R5Kps9sSRBP3YA/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Open interest form &nearr;</a>' +
+        '</div>' +
         '<p class="g-foot">Mu Sigma Lambda &middot; Alpha Delta Chapter &middot; Cornell University</p>' +
       '</div>';
     document.body.insertBefore(g, document.body.firstChild);

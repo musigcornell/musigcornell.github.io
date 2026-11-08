@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..800;1,600..900&display=swap">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/map.css">
 </head>
 <body>
 <!-- ===================== NAV ===================== -->
@@ -65,7 +66,7 @@
 <div class="stats">
   <dl class="stats-in">
     <div class="stat"><dt>Members</dt><dd>40+</dd><p class="stat-sub">Undergraduates from every college at Cornell</p></div>
-    <div class="stat"><dt>Collegiate chapters</dt><dd>25+</dd><p class="stat-sub">Mu Sigma Lambda chapters at universities nationwide</p></div>
+    <div class="stat stat-has-map"><dt>Collegiate chapters</dt><dd>25+</dd><p class="stat-sub">Mu Sigma Lambda chapters at universities nationwide</p><button class="stat-map" type="button" data-map-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>View chapter map</button></div>
     <div class="stat"><dt>National industry partners</dt><dd>10+</dd><p class="stat-sub">Teams, leagues and companies working with the fraternity</p></div>
     <div class="stat"><dt>Active Cornell alumni in the sports industry</dt><dd>1,500+</dd><p class="stat-sub">Across leagues, clubs, media, agencies and athletics</p></div>
   </dl>
@@ -564,5 +565,6 @@ function render(){
 render();
 </script>
 <script src="assets/site.js"></script>
+<script src="assets/chapters.js"></script>
 </body>
 </html>
