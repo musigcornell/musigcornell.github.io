@@ -1,4 +1,4 @@
-/* Mu Sigma Lambda Cornell — national chapter map
+/* Mu Sigma Lambda Cornell: national chapter map
    Opens from any element with [data-map-open]. Leaflet is loaded on first open. */
 (function(){
   var NATL = "https://www.musigmalambda.org/chapters/";
@@ -133,7 +133,7 @@
     map = L.map(el, { scrollWheelZoom:false, zoomSnap:0.25, minZoom:3, maxZoom:10 });
     L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
       maxZoom:16,
-      attribution:'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors'
+      attribution:'Tiles &copy; Esri, Esri, HERE, Garmin, &copy; OpenStreetMap contributors'
     }).addTo(map);
 
     /* draw Cornell last so it sits on top */

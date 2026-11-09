@@ -1,4 +1,4 @@
-/* Mu Sigma Lambda Cornell — shared page script */
+/* Mu Sigma Lambda Cornell: shared page script */
 (function(){
   var root = document.documentElement.dataset.root || "";
 

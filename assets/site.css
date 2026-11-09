@@ -455,3 +455,10 @@ h1,h2,h3,h4,.pf-bar strong,.pf-conline b,.pending-note b,.alum-text b,.role-titl
 .role-name{font-weight:600;margin-top:6px}
 .tl-kicker{font-size:12px;font-weight:700}
 .bro-group{font-size:13px;font-weight:700;letter-spacing:.16em}
+
+/* Instagram links (nav + hero) */
+.nav-ig{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:var(--r-sm);border:1px solid var(--line);color:var(--ink-2);transition:color .15s,border-color .15s}
+.nav-ig:hover{color:var(--red);border-color:var(--red)}
+.nav-ig svg{width:18px;height:18px}
+.btn-ig{display:inline-flex;align-items:center;gap:8px}
+.btn-ig svg{width:17px;height:17px;flex:none}

@@ -1,4 +1,4 @@
-/* Mu Sigma Lambda Cornell — temporary preview gate.
+/* Mu Sigma Lambda Cornell: temporary preview gate.
    Hides the site behind a password while the chapter is pending approval.
    To take the site public: delete the <script src=".../gate.js"> line and the
    <meta name="robots"> line from each page's <head> (or delete this file). */
