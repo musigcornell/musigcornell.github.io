@@ -7,6 +7,13 @@
 <script src="assets/gate.js"></script>
 <title>Mu Sigma Lambda Cornell Chapter</title>
 <meta name="description" content="Mu Sigma Lambda Cornell Chapter, the co-ed professional sports fraternity.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mu Sigma Lambda Cornell Chapter">
+<meta property="og:title" content="Mu Sigma Lambda Cornell Chapter">
+<meta property="og:description" content="Mu Sigma Lambda Cornell Chapter, the co-ed professional sports fraternity.">
+<meta property="og:url" content="https://musigcornell.org/">
+<meta property="og:image" content="https://musigcornell.org/assets/crest.png">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/crest-sm.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -167,20 +174,20 @@
     <p class="eyebrow">Find Your Path</p>
     <h2>Every major has a place in this industry.</h2>
     <p>
-      Select your college and concentration to see how it relates in the professional sports industry. 
+      Pick your college, then your major, to see where it connects to the professional sports industry.
     </p>
   </div>
 
   <div class="pf">
     <div class="pf-bar">
       <strong>The Alignment Map</strong>
-      <span>Step 1: pick your college · Step 2: pick your concentration</span>
+      <span>Step 1: pick your college · Step 2: pick your major</span>
     </div>
     <div class="pf-body">
-      <div class="pf-rail" role="listbox" aria-label="Colleges and schools" id="pfRail">
-        <div class="pf-railhead">Your major sits in…</div>
+      <div class="pf-rail" role="tablist" aria-orientation="vertical" aria-label="Colleges and schools" id="pfRail">
+        <div class="pf-railhead" role="presentation">Your major sits in…</div>
       </div>
-      <div class="pf-panel" id="pfPanel" aria-live="polite"></div>
+      <div class="pf-panel" id="pfPanel" role="tabpanel" tabindex="0"></div>
     </div>
   </div>
 </section>
@@ -310,258 +317,209 @@
 
 <script>
 /* ============================ DATA ============================ */
+/* Undergraduate colleges and schools on the Ithaca campus, plus the athletics
+   department. Each entry: id, name, school, blurb, cons [major, how it connects], paths. */
 const MAJORS = [
   {
-    id:"ilr", name:"Industrial and Labor Relations", school:"ILR School",
+    id:"ilr", name:"Industrial and Labor Relations", school:"ILR School", label:"Your focus area",
     blurb:"Professional sport is the most visible unionized labor market in the country. Every collective bargaining agreement, grievance, arbitration hearing and lockout is an ILR case study carried on national broadcast.",
     cons:[
-      ["Collective Bargaining","Every CBA, lockout and arbitration in professional sport is a bargaining problem with a media-rights contract layered on top."],
-      ["Organizational Behavior","Locker-room culture, coaching turnover, and how high-performance organizations are actually managed under public scrutiny."],
-      ["Economics","Salary caps, luxury taxes, draft systems and monopsony, the most closely studied wage structures in the economy."]
+      ["Labor Relations, Law & History","Every CBA, lockout and arbitration in professional sport is a bargaining problem with a media-rights contract layered on top."],
+      ["Labor Economics","Salary caps, luxury taxes, draft systems and monopsony: some of the most closely studied wage structures in the economy."],
+      ["Organizational Behavior","Locker-room culture, coaching turnover, and how high-performance organizations are managed under public scrutiny."],
+      ["Human Resource Studies","Scouting, hiring and keeping talent in a front office, and the compensation systems that sit behind every roster."]
     ],
-    paths:["Players' association staff","League labor policy","CBA & arbitration analysis","Compensation economics","Team HR and culture","Agent-side negotiation"],
-    campus:["Sports Entertainment Law Society (SELS)","Sports Business Society","Club Sports Council"]
+    paths:["Players' association staff","League labor policy","CBA & arbitration analysis","Compensation economics","Team HR and culture","Agent-side negotiation"]
   },
   {
-    id:"eng", name:"Engineering", school:"College of Engineering",
-    blurb:"Engineering sits underneath almost every modern competitive advantage in sport: equipment that returns energy, telemetry that survives a collision, and venue systems that move fifty thousand people in twenty minutes. The same tolerance analysis that governs aerospace governs a composite hockey stick.",
+    id:"dyson", name:"Applied Economics and Management", school:"Dyson School · SC Johnson College of Business", label:"Your concentration",
+    blurb:"A franchise is a closely held company with revenue lines most operators never see: media rights, gate, concessions, licensing, and now minority private-equity stakes. It also sells a product that spoils in three hours, which makes pricing and demand the whole game.",
     cons:[
-      ["Mechanical & Aerospace","Vehicle dynamics, aerodynamics and equipment design: the physics of a chassis, a hull, or a carbon-fiber shaft."],
-      ["Electrical & Computer","The sensor and telemetry stack: wearables, timing systems, and the hardware behind live tracking data."],
-      ["Civil & Environmental","Stadium structure, roof systems, and the environmental load of moving a crowd in and out of a district."],
-      ["Computer Science","Simulation, computer vision, and the modeling layer that turns raw tracking feeds into roster decisions."],
-      ["Systems","Whole-program optimization: schedule design, facility throughput, and how an organization's parts fit together."],
-      ["Operations Research & Information","Scheduling, travel optimization and draft math, all of them staffed roles inside leagues."]
-    ],
-    paths:["Motorsport vehicle dynamics","Equipment & apparel R&D","Wearable sensor hardware","Venue systems engineering","Broadcast capture technology","League operations research"],
-    campus:["Cornell FSAE Racing","Cornell Baja Racing","Organic Robotics Laboratory","Laboratory for Intelligent Systems and Controls (LISC)","Cornell University Solar Boat"]
-  },
-  {
-    id:"business", name:"SC Johnson College of Business", school:"Johnson · Dyson · Nolan",
-    blurb:"A franchise is a closely held company with revenue lines most operators never see: media rights, gate, concessions, licensing, and now minority private-equity stakes. Valuation, brand architecture and organizational behavior transfer to the front office almost without translation.",
-    cons:[
-      ["Accounting","Revenue recognition on media rights, deferred salary obligations, and the mechanics of franchise valuation."],
-      ["Management & Organization","Front-office design, coaching hires, and how sporting decisions are actually governed."],
+      ["Finance","Franchise valuation, minority-stake private equity, and the debt structures behind new stadiums."],
       ["Marketing","Brand, ticket demand, and the sponsorship market that funds most of the business."],
-      ["Finance","Franchise valuation, minority-stake private equity, and stadium debt structures."],
-      ["Management","General management across a club's business side and its sporting side at once."],
-      ["Executive Education","Leadership programs for the people already running teams, leagues and federations."]
+      ["Strategy","How a club or league decides where to expand, what to own, and what to license out."],
+      ["Business Analytics","Dynamic ticket pricing, revenue management, and turning fan data into decisions."],
+      ["Accounting","Revenue recognition on media rights, deferred salary obligations, and the mechanics of a team's books."],
+      ["Applied Economics","Demand modeling, concessions margin, and the public economics of stadium subsidy."]
     ],
-    paths:["Team & league corporate strategy","Sports investment banking","Private equity in franchises","Sponsorship sales & partnerships","Club finance and cap management","Agency management"],
-    campus:["Sports Business Society","Media Entertainment & Sports Club","Sports Analytics Club"]
+    paths:["Team & league corporate strategy","Sports investment banking","Private equity in franchises","Sponsorship sales & partnerships","Dynamic ticket pricing","Club finance and cap management"]
   },
   {
-    id:"hotel", name:"Nolan School of Hotel Administration", school:"Cornell Nolan",
-    blurb:"A game is a hospitality event with a scoreboard. Premium seating, club spaces, team travel, and the mixed-use districts now built around arenas are hotel-school problems at professional scale, and the margins sit exactly where Nolan teaches.",
+    id:"hotel", name:"Hotel Administration", school:"Nolan School · SC Johnson College of Business", label:"Your concentration",
+    blurb:"A game is a hospitality event with a scoreboard. Premium seating, club spaces, team travel, and the mixed-use districts now built around arenas are hotel-school problems at professional scale.",
     cons:[
-      ["Services Management","Matchday as a service operation: fifty thousand guests, three hours, one chance to get it right."],
-      ["Real Estate","Arena districts, mixed-use development, and the asset side of a franchise's balance sheet."],
-      ["Hospitality","Premium seating, clubs and suites, the highest-margin square footage in the building."]
+      ["Services Marketing & Operations Management","Matchday as a service operation: tens of thousands of guests, three hours, one chance to get it right."],
+      ["Finance, Accounting & Real Estate","Arena districts, mixed-use development, and the asset side of a franchise's balance sheet."],
+      ["Hospitality Leadership","Premium seating, clubs and suites, the highest-margin square footage in the building, and the staff who run it."]
     ],
-    paths:["Premium & suite hospitality","Venue and district real estate","Matchday operations","Team travel and logistics","Golf & private club management","Major-event bidding"],
-    campus:["Sports Business Society","Club Sports Council","Cornell Turfgrass Program"]
+    paths:["Premium & suite hospitality","Venue and district real estate","Matchday operations","Team travel and logistics","Golf & private club management","Major-event bidding"]
   },
   {
-    id:"bowers", name:"Cornell Bowers CIS", school:"Computing and Information Science",
-    blurb:"The analytics department is now a standing line on the org chart, and the hardest problems there are data problems: optical tracking at twenty-five frames a second, injury-risk modeling, and recommendation systems that decide what a hundred million fans see first.",
+    id:"eng", name:"Engineering", school:"College of Engineering", label:"Your major",
+    blurb:"Engineering sits underneath almost every modern competitive advantage in sport: equipment that returns energy, telemetry that survives a collision, and venue systems that move fifty thousand people in twenty minutes.",
     cons:[
-      ["Information Science","How fans, data and platforms interact, and what an organization is able to learn from that."],
+      ["Mechanical Engineering","Vehicle dynamics, aerodynamics and equipment design: the physics of a chassis, a hull, or a carbon-fiber shaft."],
+      ["Electrical & Computer Engineering","The sensor and telemetry stack: wearables, timing systems, and the hardware behind live tracking data."],
+      ["Civil Engineering","Stadium structure, roof systems, and the load of moving a crowd in and out of a district."],
+      ["Operations Research & Engineering","Scheduling, travel optimization and draft math, all of them staffed roles inside leagues."],
+      ["Biomedical Engineering","Biomechanics, injury prevention, and the devices that measure and protect an athlete's body."],
+      ["Materials Science & Engineering","Composites, foams and polymers: what a stick, a shoe plate or a helmet liner is actually made of."]
+    ],
+    paths:["Motorsport vehicle dynamics","Equipment & apparel R&D","Wearable sensor hardware","Venue systems engineering","Broadcast capture technology","League operations research"]
+  },
+  {
+    id:"bowers", name:"Computing and Information Science", school:"Cornell Bowers", label:"Your major",
+    blurb:"The analytics department is now a standing line on the org chart, and the hardest problems there are data problems: optical tracking, injury-risk modeling, and recommendation systems that decide what millions of fans see first.",
+    cons:[
       ["Computer Science","Tracking pipelines, vision models, and the engineering underneath every analytics department."],
+      ["Information Science","How fans, data and platforms interact, and what an organization is able to learn from that."],
       ["Statistics and Data Science","Player valuation, projection systems, and the modeling that decides who makes a roster."]
     ],
-    paths:["Player evaluation & analytics","Computer vision tracking","Injury & workload modeling","Fan data and personalization","Betting markets & pricing","Sports product engineering"],
-    campus:["Sports Analytics Club","Cornell University Extended Reality (CUXR)","ESports at Cornell","Robots in Groups Lab"]
+    paths:["Player evaluation & analytics","Computer vision tracking","Injury & workload modeling","Fan data and personalization","Betting markets & pricing","Sports product engineering"]
   },
   {
-    id:"as", name:"Arts & Sciences", school:"College of Arts and Sciences",
-    blurb:"The interpretive side of the industry: why fans bond, how leagues negotiate with cities and nations, how a rivalry becomes cultural memory. It is also where most of the best writers and communicators in sport come from.",
+    id:"as", name:"Arts & Sciences", school:"College of Arts and Sciences", label:"Your major",
+    blurb:"The interpretive side of the industry: why fans bond, how leagues negotiate with cities and nations, how a rivalry becomes cultural memory. It is also where many of the best writers and communicators in sport come from.",
     cons:[
+      ["Economics","Competitive balance, player markets, and why leagues are structured unlike any other business."],
       ["Psychology","Performance under pressure, motivation, and the psychology of fandom and identity."],
-      ["History","How leagues, rivalries, and the business of sport arrived at their present shape."],
       ["Government","Sport as diplomacy, regulation, and the politics of hosting a mega-event."],
-      ["Astronomy","Precision measurement, optics and large-scale data, a toolkit that transfers cleanly to tracking systems."]
+      ["History","How leagues, rivalries, and the business of sport arrived at their present shape."],
+      ["Sociology","Who gets to play, who gets paid, and what sport shows about race, class and gender."]
     ],
-    paths:["Sport & performance psychology","Sports journalism and longform","League public affairs","International sport policy","Fan behavior research","Documentary and archival work"],
-    campus:["WVBR","Big Red Sports Network (BRSN)","WICB","Media Entertainment & Sports Club"]
+    paths:["Sport & performance psychology","Sports journalism and longform","League public affairs","International sport policy","Fan behavior research","Documentary and archival work"]
   },
   {
-    id:"humec", name:"Human Ecology", school:"College of Human Ecology",
-    blurb:"What an athlete wears is engineered kit. Fiber behavior under sweat and impact, helmet energy absorption, and design a nineteen-year-old will actually keep wearing are all Human Ecology questions with commercial answers.",
+    id:"cals", name:"Agriculture and Life Sciences", school:"Cornell CALS", label:"Your major",
+    blurb:"The playing surface is a living system, and sustainability has become a commercial requirement rather than a press release. Cornell's turfgrass research works on the ground games are actually played on.",
     cons:[
-      ["Human Centered Design","Designing for an athlete's body under load, and for the fan's experience built around it."],
-      ["Athleticwear","Performance apparel from fiber selection through fit to the retail line it eventually becomes."],
-      ["Fabric Science","How textiles behave under sweat, abrasion and repeated impact over a full season."],
-      ["Protective Equipment","Helmets, pads, and the energy-absorption research that rewrites rulebooks."]
-    ],
-    paths:["Performance apparel design","Protective equipment R&D","Textile and materials science","Footwear development","Uniform and kit design","Product ergonomics"],
-    campus:["Sports Medicine Club","Sports Nutrition","Cornell Student Athletes for Sustainability"]
-  },
-  {
-    id:"dyson", name:"Applied Economics and Management", school:"Charles H. Dyson School",
-    blurb:"Demand modeling, pricing and supply chains, applied to a product that spoils in three hours. Dynamic ticket pricing, concessions margin, and the economics of publicly financed stadiums all live here.",
-    cons:[
-      ["Applied Economics & Policy","Demand modeling, dynamic pricing, and the public economics of stadium subsidy."],
-      ["Food Industry Management","Concessions as a several-hundred-million-dollar category run on thin margins."],
-      ["International Development","Global league expansion and how a sport market opens in a new region."]
-    ],
-    paths:["Dynamic ticket pricing","Revenue management","Concessions & F&B strategy","Economic-impact analysis","Sponsorship valuation","Global market entry"],
-    campus:["Sports Business Society","Sports Analytics Club","Cornell Turfgrass Program"]
-  },
-  {
-    id:"law", name:"Cornell Law School", school:"Law",
-    blurb:"NIL turned every college athlete into a small business, and the legal questions arrived well ahead of the rules. Contracts, intellectual property, immigration for international athletes, and antitrust are the working vocabulary of this industry.",
-    cons:[
-      ["Financial & Tax Literacy in Athletics Practicum","Cornell's own clinic for NIL contracts, tax exposure and financial counsel for real athletes."]
-    ],
-    paths:["Player contracts & NIL counsel","League antitrust and compliance","IP, trademark & media rights","Athlete tax and estate planning","Sports arbitration (CAS)","Integrity and regulatory roles"],
-    campus:["Sports Entertainment Law Society (SELS)","Faculty Advisory Committee on Athletics and Physical Education (FACAPE)"]
-  },
-  {
-    id:"brooks", name:"Brooks School of Public Policy", school:"Cornell Brooks",
-    blurb:"Whether a city should finance an arena, how a league writes its gambling policy, and what a mega-event does to a host community are policy questions with billion-dollar answers and very short political timelines.",
-    cons:[
-      ["Public Policy","Gambling regulation, youth access, equity, and the rules leagues have to operate inside."],
-      ["Infrastructure","Transit, public financing, and what a new venue obligates a city to build around it."]
-    ],
-    paths:["Stadium finance & public subsidy","Sports gambling regulation","Olympic & World Cup host policy","Youth sport access policy","Title IX and equity policy","Infrastructure planning"],
-    campus:["Faculty Advisory Committee on Athletics and Physical Education (FACAPE)","Club Sports Council","Cornell Student Athletes for Sustainability"]
-  },
-  {
-    id:"aap", name:"Architecture, Art, and Planning", school:"Cornell AAP",
-    blurb:"Venues are this industry's most expensive product. Sightlines, crowd flow, acoustics and the way an arena stitches into a neighborhood determine how a two-billion-dollar building performs on an ordinary Tuesday.",
-    cons:[
-      ["Architecture","Bowl geometry, sightlines, and how a venue reads from the concourse and from the street."],
-      ["Planning","Sports districts, transit load, and the neighborhood politics of siting an arena anywhere at all."]
-    ],
-    paths:["Stadium & arena architecture","Sightline and crowd-flow design","Training facility design","Sports district master planning","Wayfinding & environmental graphics","Adaptive reuse of venues"],
-    campus:["Cornell University Extended Reality (CUXR)","Club Sports Council"]
-  },
-  {
-    id:"cals", name:"Agriculture and Life Sciences", school:"Cornell CALS",
-    blurb:"The playing surface is a living system, and sustainability has become a commercial requirement rather than a press release. Cornell's turfgrass program is an industry standard for the ground games are actually played on.",
-    cons:[
-      ["Communications","Sports media, science communication, and telling a program's story to donors and to the public."],
-      ["Natural Resources","Water, land and habitat: the resource footprint of golf courses, ski areas and open-air venues."],
-      ["Ecology & Evolutionary Biology","Climate pressure on outdoor seasons and the biology behind performance environments."],
-      ["Horticulture","Playing surfaces as living systems. Cornell's turfgrass work sets the standard for professional fields."],
+      ["Communication","Sports media, social strategy, and telling a program's story to donors and to the public."],
+      ["Plant Sciences","Playing surfaces as living systems: turfgrass, soil, and the field conditions that decide a game."],
+      ["Environment & Sustainability","Water, land and energy: the resource footprint of golf courses, ski areas and open-air venues."],
+      ["Food Science","Athlete fueling, product development, and the food side of a matchday."],
       ["Global Development","Sport-for-development programming and how access gets built in emerging markets."]
     ],
-    paths:["Turfgrass & field science","Venue sustainability","Sports communications","Water and resource management","Athlete nutrition science","Sport for development"],
-    campus:["Cornell Turfgrass Program","Cornell Student Athletes for Sustainability","Sports Nutrition","WVBR"]
+    paths:["Turfgrass & field science","Venue sustainability","Sports communications","Water and resource management","Athlete nutrition science","Sport for development"]
   },
   {
-    id:"vet", name:"College of Veterinary Medicine", school:"Cornell Vet",
-    blurb:"Horse racing is a professional sport with its own medicine, its own welfare regulation and its own betting economy, and Cornell operates clinical infrastructure on the grounds of a major racetrack.",
+    id:"humec", name:"Human Ecology", school:"College of Human Ecology", label:"Your major",
+    blurb:"What an athlete wears is engineered kit. Fiber behavior under sweat and impact, helmet energy absorption, and design a nineteen-year-old will actually keep wearing are all Human Ecology questions with commercial answers.",
     cons:[
-      ["Harry M. Zweig Memorial Fund for Equine Research","Cornell's dedicated equine research fund for soundness,, injury and welfare in racing."],
-      ["Cornell Ruffian Equine Specialists (Belmont)","Cornell's clinical operation on the backstretch of Belmont Park."],
-      ["Equine Studies","The performance, business and regulation of the racing industry as a whole."]
+      ["Fashion Design & Management","Performance apparel from concept through fit to the retail line it eventually becomes."],
+      ["Fiber Science","How textiles behave under sweat, abrasion and repeated impact over a full season."],
+      ["Design & Environmental Analysis","Designing for an athlete's body under load, and for the fan's experience built around it."],
+      ["Nutritional Sciences","Fueling, recovery, and the science behind a team's performance nutrition program."]
     ],
-    paths:["Equine sports medicine","Racing integrity & welfare","Performance physiology","Racetrack operations","Bloodstock analysis","Animal-sport policy"],
-    campus:["Sports Medicine Club","Cornell Turfgrass Program"]
+    paths:["Performance apparel design","Protective equipment R&D","Textile and materials science","Footwear development","Uniform and kit design","Performance nutrition"]
   },
   {
-    id:"weill", name:"Weill Cornell Medicine", school:"Weill Cornell",
-    blurb:"Careers end, brains age, and mental health has moved from the back of the training room to the center of league policy. Long-term athlete health is now a governance problem as much as a clinical one.",
+    id:"brooks", name:"Public Policy", school:"Cornell Brooks School of Public Policy", label:"Your major",
+    blurb:"Whether a city should finance an arena, how a league writes its gambling policy, and what a mega-event does to a host community are policy questions with billion-dollar answers and very short political timelines.",
     cons:[
-      ["Psychiatry","Athlete mental health, now a matter of league policy rather than a private arrangement."],
-      ["Gerontology","What a career of repeated impact does across forty years, and the obligations that outlast a contract."]
+      ["Public Policy","Stadium subsidies, gambling regulation, youth access, and the rules leagues have to operate inside."],
+      ["Health Care Policy","Concussion protocols, long-term athlete health, and who pays for care after a career ends."]
     ],
-    paths:["Sports psychiatry","Concussion and CTE research","Post-career athlete health","Team medical staff","Rehabilitation science","League health policy"],
-    campus:["Sports Medicine Club","Sports Nutrition","Men of Color in Athletics (MOCA)"]
+    paths:["Stadium finance & public subsidy","Sports gambling regulation","Olympic & World Cup host policy","Youth sport access policy","Title IX and equity policy","League health policy"]
   },
   {
-    id:"tech", name:"Cornell Tech", school:"Roosevelt Island, NYC",
-    blurb:"New York City campus, startup posture. The sports-technology market (streaming, betting, fan platforms, wearables) is built where the capital and the leagues are, and Cornell Tech sits inside it.",
+    id:"aap", name:"Architecture, Art, and Planning", school:"Cornell AAP", label:"Your major",
+    blurb:"Venues are this industry's most expensive product. Sightlines, crowd flow, acoustics and the way an arena stitches into a neighborhood determine how a billion-dollar building performs on an ordinary Tuesday.",
     cons:[
-      ["Information Science","Product and platform work at the point where sport meets consumer technology."],
-      ["Computer Science","Streaming infrastructure, recommendation, and real-time data at full fan scale."],
-      ["Electrical & Computer","Devices and connectivity: the wearables and venue networks underneath everything else."],
-      ["Operations Research & Information","Marketplace design for tickets, betting and secondary markets."]
+      ["Architecture","Bowl geometry, sightlines, and how a venue reads from the concourse and from the street."],
+      ["Urban & Regional Studies","Sports districts, transit load, and the neighborhood politics of siting an arena."],
+      ["Fine Arts","Identity, uniforms, murals and the visual culture a club builds around itself."]
     ],
-    paths:["Sports-tech product management","Streaming & OTT engineering","Betting platform design","Startup founding (Studio)","Venture capital in sports tech","Fan engagement platforms"],
-    campus:["Sports Analytics Club","ESports at Cornell","Cornell University Extended Reality (CUXR)"]
+    paths:["Stadium & arena architecture","Sightline and crowd-flow design","Training facility design","Sports district master planning","Wayfinding & environmental graphics","Adaptive reuse of venues"]
   },
   {
-    id:"athletics", name:"Cornell Athletics", school:"Athletics & Physical Education",
-    blurb:"A Division I department running thirty-seven varsity programs staffs the same functions a professional club staffs, and gives undergraduates real responsibility inside them.",
+    id:"athletics", name:"Cornell Athletics", school:"Not a college: the front office down the hill", label:"Where you could work",
+    blurb:"A Division I department with more than thirty varsity teams staffs the same functions a professional club staffs, and students from any major can work inside them.",
     cons:[
       ["Ticketing","Pricing, inventory, and the season-ticket relationship that anchors a program's revenue."],
       ["Fan Engagement","Attendance, student sections, and the digital layer that keeps people coming back."],
       ["Sponsorships","Corporate partnerships, activation, and proving what a sponsor actually bought."],
-      ["Broadcasting","Live production, ESPN+ workflows, and on-air reps from a real control room."]
+      ["Broadcasting","Live production and streaming workflows, with reps in a real control room."]
     ],
-    paths:["Ticket sales & operations","Marketing & fan engagement","Corporate sponsorship","Broadcast production","Compliance","Athletic communications"],
-    campus:["Big Red Sports Network (BRSN)","Cornell Men's Hockey","Cornell Men's Heavyweight Rowing","WVBR","Men of Color in Athletics (MOCA)"]
-  },
-  {
-    id:"technion", name:"Technion, Israel", school:"Jacobs Technion-Cornell",
-    blurb:"Cornell's dual-degree partner and a serious center for biomechanics and robotics research. Gait analysis, exoskeletons and prosthetics feed straight into performance work and into adaptive and Paralympic sport.",
-    cons:[
-      ["Aerospace Engineering","Aerodynamics and flight systems, from drone-based officiating to projectile behavior."],
-      ["Computer Science","Motion capture, pose estimation, and the vision research underneath modern tracking."],
-      ["Electrical & Computer Engineering","Sensor design and embedded systems for performance measurement."],
-      ["Civil & Environmental Engineering","Venue structures and the materials science that carries them."],
-      ["Biorobotics and Biomechanics","Gait, exoskeletons and prosthetics, applied directly to adaptive and Paralympic sport."],
-      ["Architecture","Sport facility design under a different regulatory and climatic set of constraints."]
-    ],
-    paths:["Biomechanics research","Adaptive & Paralympic technology","Exoskeletons and prosthetics","Motion capture systems","Sports robotics","International sports R&D"],
-    campus:["Organic Robotics Laboratory","Laboratory for Intelligent Systems and Controls (LISC)","Robots in Groups Lab"]
+    paths:["Ticket sales & operations","Marketing & fan engagement","Corporate sponsorship","Broadcast production","Compliance","Athletic communications"]
   }
 ];
 
 /* ============================ PATHFINDER ============================ */
 const rail = document.getElementById("pfRail");
 const panel = document.getElementById("pfPanel");
-let activeMajor = "ilr";
-let activeCon = null;
+let activeMajor = MAJORS[0].id;
+let activeCon = 0;
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 
 MAJORS.forEach(m=>{
   const b = document.createElement("button");
-  b.className="pf-opt";
-  b.type="button";
-  b.setAttribute("role","option");
-  b.dataset.id=m.id;
-  b.innerHTML = `${m.name}<small>${m.school}</small>`;
-  b.addEventListener("click",()=>{activeMajor=m.id;activeCon=null;render();});
+  b.className = "pf-opt";
+  b.type = "button";
+  b.id = "pfTab-" + m.id;
+  b.setAttribute("role","tab");
+  b.setAttribute("aria-controls","pfPanel");
+  b.dataset.id = m.id;
+  b.innerHTML = `${esc(m.name)}<small>${esc(m.school)}</small>`;
+  b.addEventListener("click",()=>selectMajor(m.id,false));
   rail.appendChild(b);
 });
 
-function esc(s){return String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+function selectMajor(id, focus){
+  activeMajor = id;
+  activeCon = 0;
+  render();
+  if (focus) document.getElementById("pfTab-" + id).focus();
+}
 
-function render(){
+/* arrow keys move between colleges, as in any tab list */
+rail.addEventListener("keydown",e=>{
+  const i = MAJORS.findIndex(x=>x.id===activeMajor);
+  let n = null;
+  if (e.key==="ArrowDown" || e.key==="ArrowRight") n = (i+1) % MAJORS.length;
+  else if (e.key==="ArrowUp" || e.key==="ArrowLeft") n = (i-1+MAJORS.length) % MAJORS.length;
+  else if (e.key==="Home") n = 0;
+  else if (e.key==="End") n = MAJORS.length-1;
+  if (n===null) return;
+  e.preventDefault();
+  selectMajor(MAJORS[n].id,true);
+});
+
+function render(focusChip){
   const m = MAJORS.find(x=>x.id===activeMajor);
   rail.querySelectorAll(".pf-opt").forEach(o=>{
-    o.setAttribute("aria-selected", o.dataset.id===activeMajor ? "true":"false");
+    const on = o.dataset.id===activeMajor;
+    o.setAttribute("aria-selected", on ? "true":"false");
+    o.tabIndex = on ? 0 : -1;
   });
+  panel.setAttribute("aria-labelledby","pfTab-" + m.id);
 
-  const conLine = activeCon===null
-    ? `<div class="pf-conline empty">Pick a concentration above to see the specific overlap.</div>`
-    : `<div class="pf-conline"><b>${esc(m.cons[activeCon][0])}</b>${esc(m.cons[activeCon][1])}</div>`;
-
+  const c = m.cons[activeCon];
   panel.innerHTML = `
     <p class="pf-school">${esc(m.school)}</p>
     <h3>${esc(m.name)}</h3>
     <p class="pf-blurb">${esc(m.blurb)}</p>
 
-    <p class="pf-sub">Your concentration</p>
+    <p class="pf-sub">${esc(m.label)}</p>
     <div class="pf-chips" id="pfChips">
-      ${m.cons.map((c,i)=>`<button class="chip" type="button" data-i="${i}" aria-pressed="${activeCon===i}">${esc(c[0])}</button>`).join("")}
+      ${m.cons.map((x,i)=>`<button class="chip" type="button" data-i="${i}" aria-pressed="${activeCon===i}">${esc(x[0])}</button>`).join("")}
     </div>
-    ${conLine}
+    <div class="pf-conline" aria-live="polite"><b>${esc(c[0])}</b>${esc(c[1])}</div>
 
     <p class="pf-sub">Where it lands in the industry</p>
     <ul class="pf-paths">${m.paths.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
-
   `;
 
   panel.querySelectorAll("#pfChips .chip").forEach(ch=>{
     ch.addEventListener("click",()=>{
-      const i = Number(ch.dataset.i);
-      activeCon = (activeCon===i) ? null : i;
-      render();
+      activeCon = Number(ch.dataset.i);
+      render(true);
     });
   });
+  if (focusChip){
+    const again = panel.querySelector('#pfChips .chip[data-i="'+activeCon+'"]');
+    if (again) again.focus();
+  }
 }
 render();
 </script>
